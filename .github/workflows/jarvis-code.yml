@@ -26,9 +26,12 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v4
       - name: Check GitHub Status
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          USES_VERSION: ${{ secrets.SEASONTWOLEVEL1USED }}
         # Source of GitHub Action in line 30: 
         # https://github.com/dduzgun-security/secure-code-game-action
-        uses: ${{ secrets.SEASONTWOLEVEL1USED }} # v2.0
+        uses: ${{ USES_VERSION }} # v2.0
         with:
           who-to-greet: "Jarvis, obviously ..."
           get-token: "token-4db56ee8-dbec-46f3-96f5-32247695ab9b"
